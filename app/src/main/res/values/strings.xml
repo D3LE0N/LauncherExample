@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Launcher</string>
+    <string name="leer_dpi">Leer DPI</string>
+    <string name="resultado">Resultado</string>
+</resources>
