@@ -8,7 +8,6 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +16,6 @@ import com.ssasa.core.Launcher;
 import com.ssasa.core.LauncherListener;
 import com.ssasa.core.pojo.LauncherException;
 import com.ssasa.core.pojo.Persona;
-
-import org.w3c.dom.Text;
 
 import java.util.Locale;
 
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         //SecretKey: Este parametro es un string proporciano por SSASA, sin este string el app de Lector no se podra invocar
         //LauncherListener: Este parametro es un listener que nos permite saber si se obtuvo la información de forma correcta o en
         //Caso que haya ocurrido un error
-        launcher = new Launcher(this, "73545xxxxxxxxxxe7b4afb24", new LauncherListener() {
+        launcher = new Launcher(this, "735458bb9xxxxxxxe7b4afb24", new LauncherListener() {
 
             //Metodo lanzado por la interface cuando no ocurrio problemas al obtener la información
             @Override
@@ -52,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 //El objeto persona contiene toda la información capturada en el DPI
                 //el metodo getFoto retorna foto en 64bits
                 byte[] fotobytes = Base64.decode(persona.getFoto(), Base64.DEFAULT);
-
-                result.setText(String.format(Locale.getDefault(), "Cui %s Nombre %s Apellido %s", persona.getCui(), persona.getPrimerNombre(), persona.getPrimerApellido()));
-
+                result.setText(String.format(Locale.getDefault(), "Cui %s Nombre %s Apellido %s version DPI %d genero %s", persona.getCui(), persona.getPrimerNombre(), persona.getPrimerApellido(), persona.getVersionDPI(), persona.getGenero()));
                 Bitmap bitmap = BitmapFactory.decodeByteArray(fotobytes, 0, fotobytes.length);
                 image.setImageBitmap(bitmap);
             }
